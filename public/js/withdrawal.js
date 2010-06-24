@@ -120,7 +120,7 @@ withdrawBtn.addEventListener('click', async (e) => {
 
 
 const balanceDOM = document.querySelector('.curBalance')
-
+let accumulateTotal = JSON.parse(localStorage.getItem('accumulateTotal'));
 
 window.addEventListener('DOMContentLoaded', async () => {
   try {
