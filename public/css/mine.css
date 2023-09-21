@@ -333,7 +333,6 @@ Mine
 .mine-info {
   display: grid;
   grid-template-columns: 10% 50% 40%;
-  font-size: larger;
   padding-right: 2rem;
   align-items: center;
 }

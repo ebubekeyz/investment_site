@@ -335,9 +335,6 @@ Income styles
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     padding-top: 2rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
     width: 100%;
   }
 
@@ -370,6 +367,7 @@ Income styles
   margin-bottom: 1.25rem;
   color: #5f5f5b;
 }
+
 
 .form-input:focus {
   outline: none;

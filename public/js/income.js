@@ -98,11 +98,11 @@ const income = async () => {
       earn += dailyEarningCalc[length2];
       todayEarningDOM.textContent = formatPrice(dailyEarningCalc[length2]);
       return localStorage.setItem('earn', JSON.stringify(earn));
-    }, 20000);
+    }, 4000);
 
     const receiveBtnInterval = setInterval(() => {
       receiveBtn.classList.add('show');
-    }, 2000);
+    }, 4000);
 
     let date = new Date();
     date.setDate(date.getDate() + 30);
@@ -110,10 +110,10 @@ const income = async () => {
     date = date.toLocaleString();
     console.log(date);
 
-    if (date) {
-      clearInterval(dailyInterval);
-      clearInterval(receiveBtnInterval);
-    }
+    // if (date) {
+    //   clearInterval(dailyInterval);
+    //   clearInterval(receiveBtnInterval);
+    // }
 
     getEarn = JSON.parse(localStorage.getItem('earn'));
   } catch (error) {
