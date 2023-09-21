@@ -90,7 +90,7 @@ setInterval(() => {
 let countDOM = document.querySelector('.count');
 
 let up = true;
-let value = 500;
+let value = 90;
 let increment = 1;
 let ceiling = 0;
 
