@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teck</title>
+
+    <link rel="stylesheet" href="../css/income.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="alert"></div>
+    <!-- preloader -->
+    <div class="preloader">
+      <p>
+        Loading<span class="dot1">.</span><span class="dot2">.</span
+        ><span class="dot3">.</span><span class="dot4">.</span
+        ><span class="dot5">.</span><span class="dot6">.</span>
+      </p>
+    </div>
+    <!-- team -->
+    <a href="https://chat.whatsapp.com/E0dhHX2A9hAI5UHnvzFduz" class="team"
+      ><i class="fab fa-teamspeak"></i
+    ></a>
+
+    <div class="product-section">
+      <div class="product-center section-center">
+        <span class="chevron"><i class="fas fa-chevron-left"></i></span>
+        <h3>Funds</h3>
+      </div>
+    </div>
+
+    <div class="pro-section">
+      <div class="pro-center section-center">
+        <article class="product-details body-main">
+          <p>Today's estimated earning</p>
+          <h2 class="today-earn">0</h2>
+
+          <div class="fund">
+            <div class="inv-amt">
+              <p>Investment amount</p>
+              <h3 class="invest-amt">0</h3>
+            </div>
+
+            <div class="acc-income">
+              <p>Accumulated income</p>
+              <h3 class="acct-income">0</h3>
+            </div>
+          </div>
+
+          <form class="form-control">
+            <input type="text" class="amount-input" hidden id="amount" />
+            <button
+              type="submit"
+              class="receive-btn data-btn btn"
+              id="receive-btn"
+            >
+              Receive
+            </button>
+          </form>
+        </article>
+
+        <article class="product-details body-main2">
+          <img src="../images/nodata.png" class="data-img" alt="" />
+          <p>No more</p>
+          <a href="/dashboard" type="button" class="data-btn btn">go buy one</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-center section-center">
+        <article class="menu-main">
+          <a href="/dashboard">
+            <span class="fav"><i class="fas fa-charging-station"></i></span>
+            <p>Teck</p>
+          </a>
+        </article>
+
+        <article class="menu-main" id="income">
+          <a href="/income">
+            <span class="fav"><i class="fas fa-money-check"></i></span>
+            <p>Income</p>
+          </a>
+        </article>
+
+        <article class="menu-main">
+          <a href="">
+            <span class="fav"><i class="fas fa-paper-plane"></i></span>
+            <p>Share</p>
+          </a>
+        </article>
+
+        <article class="menu-main">
+          <a href="/mine">
+            <span class="fav"><i class="fas fa-users"></i></span>
+            <p>Mine</p>
+          </a>
+        </article>
+      </div>
+    </div>
+
+    <script src="../js/income.js"></script>
+  </body>
+</html>

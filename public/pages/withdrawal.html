@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal</title>
+    <link rel="stylesheet" href="../css/withdrawal.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+</head>
+<body>
+    <div class="alert"></div>
+    <!-- preloader -->
+    <div class="preloader">
+      <p>
+        Loading<span class="dot1">.</span><span class="dot2">.</span
+        ><span class="dot3">.</span><span class="dot4">.</span
+        ><span class="dot5">.</span><span class="dot6">.</span>
+      </p>
+    </div>
+
+    <div class="product-section">
+      <div class="product-center section-center">
+        <span class="chevron"><i class="fas fa-chevron-left"></i></span>
+        <h3>Withdrawal</h3>
+      </div>
+    </div>
+
+    <div class="withdrawal-center section-center">
+        <p>Current Balance</p>
+        <h3>₦220.00</h3>
+    </div>
+
+
+    <div class="section-center">
+        <form class="form-control">
+          <div class="realname">
+            <input type="text" class="form-input" id="realname" value="10000" readonly/>
+          </div>
+
+          <div class="amount">
+            <input type="text" class="form-input" id="amount" placeholder="Withdrawal Amount"/>
+            <span class="naira1">₦</span>
+          </div>
+
+          <div class="tax">
+            <input type="text" class="form-input1" id="tax" value="1000" readonly/>
+            <span class="naira2">Withdrawal tax ₦</span>
+          </div>
+
+          <div class="actualAmt">
+            <input type="text" class="form-input2" id="actualAmt" value="1000" readonly/>
+            <span class="naira3">The actual withdrawal is ₦</span>
+          </div>
+  
+            <button type="submit" class="withdraw-btn btn" id="withdraw-btn">withdraw</button>
+        </form>
+      </div>
+
+
+
+
+    <div class="withdraw-section section">
+        <div class="withdraw-center section-center">
+            <h2>Withdrawal Instructions</h2>
+            <p>The minimum withdrawal amount is ₦2000, and you can only withdraw once a day.</p>
+            <p>10% of maintinance fee</p>
+            <p>Withdraw time is from 09:00am to 5:00 pm everyday (including holidays and weekends</p>
+            <p>Withdrawal time: Arrival within 1-24 hours. (In case of special circumstances, the withdrawal will be credited within 48 hours)</p>
+            <p>If you encounter a withdrawal failure, please check your bank account information is correct in time. if the bank information is incorrectly filled in, please contact online customer service to correct it in time.</p>
+        </div>
+    </div>
+
+
+    <script src="../js/withdrawal.js"></script>
+</body>
+</html>

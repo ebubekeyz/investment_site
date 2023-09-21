@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link rel="stylesheet" href="../css/buy.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+  />
+
+</head>
+<body class="container">
+<!-- preloader -->
+<div class="preloader">
+    <p>Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span><span class="dot4">.</span><span class="dot5">.</span><span class="dot6">.</span></p>
+  </div>
+
+  <a href="https://chat.whatsapp.com/E0dhHX2A9hAI5UHnvzFduz" class="team"><i class="fab fa-teamspeak"></i></a>
+  
+    <div class="buy-section">
+        <div  class="home section-center">
+            <span class="chevron"><i class="fas fa-chevron-left"></i></span>
+            <h3 class="count section-center"></h3>
+        </div>
+        
+        <div class="buy-center section-center">
+            
+
+            <article class="buy-box1">
+                <img src="../images/opay.png" alt="" class="buy-img">
+                <p>Opay Microfinance Bank</p>
+                <h2 class="amount"><span></span></h2>
+
+                
+                <div class="buy-foot">Amount: <span class="amount"></span></div>
+                
+            </article>
+
+        </div>
+
+
+        <div class="buy-form section-center">
+            <form class="form-control">
+                <label for="step" class="buy-label"><b><span class="imp">*</span>Step 1: </b>Input the sender name</label>
+
+                <input type="text" class="buy-input" id="senderName">
+                <input type="text" class="buy-input"  hidden id="investAmt">
+                <input type="text" class="buy-input"  hidden id="dailyPercentage">
+                <input type="text" class="buy-input"  hidden id="totalPercentage">
+                <input type="text" class="buy-input" hidden id="investName">
+                
+
+                <p class="instruct">Open your bank app and make transfer. Copy the bank account shown below and input the amount shown above.</p>
+
+                <div class="acc">
+                    <p>Pay with transfer:</p>
+                    <p class="bank">Fidelity</p>
+                    <div class="details">
+                        <h2 class="acc-text">23252677282</h2>
+                        <button type="button" class="acc-btn btn">Copy</button>
+                    </div>
+                </div>
+
+                <a href="" type="submit" class="submit-btn btn" id="sender-btn">I HAVE MADE PAYMENT</a>
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="modal">
+        <h2>Tips</h2>
+        <p>The correct payer information must be entered, otherwise the recharge cannot be successful</p>
+        <button type="button" class="modal-btn btn">OK</button>
+    </div>
+    
+    <div class="copy">Account Number copied successfully</div>
+    <div class="alert"></div>
+
+    
+
+    <script src="../js/buy.js" type="module"></script>
+</body>
+</html>
