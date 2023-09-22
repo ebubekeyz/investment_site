@@ -312,7 +312,8 @@ Mine
 }
 
 .mine-section {
-  padding: 3rem 0;
+  padding: 1rem 0;
+  padding-bottom: 3rem;
   background: linear-gradient(
     to right,
     rgba(126, 116, 116, 0.6),
