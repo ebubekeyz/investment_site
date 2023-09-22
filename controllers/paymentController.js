@@ -51,7 +51,7 @@ const createPayment = async (req, res) => {
       "><span style="
       text-transform: capitalize;
       ">${senderName}</span> just made payment of ₦${investmentAmount} for ${investmentName}. Please cofirm payment with the link below</h2>
-      <p style="font-weight: bold; text-align: center"><a type="button" href="http://localhost:2200/paymentConfirm?id=${id}" style="
+      <p style="font-weight: bold; text-align: center"><a type="button" href="https://investment-site.onrender.com/paymentConfirm?id=${id}" style="
       text-align: center;  
       background: hsl(21, 62%, 45%);
       color: white;
