@@ -367,7 +367,7 @@ Buy Styles
 
 .details {
   display: grid;
-  grid-template-columns: 70% 20%;
+  grid-template-columns: 1fr 1fr;
 }
 
 .acc-btn {
