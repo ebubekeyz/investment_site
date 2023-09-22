@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const {phone, userId, referID} = user
     mineNumberDOM.textContent = phone
-    mineIDDOM.textContent = `ID: ${userId}`
+    mineIDDOM.innerHTML = `<span style="font-weight: 700">ID:</span> ${userId}`
 
     mineIncomeDOM.innerHTML = `
     <a href="/income?id=${userId}" class="investment">
