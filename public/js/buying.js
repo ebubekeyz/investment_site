@@ -13,6 +13,73 @@ const formatPrice = (investment) => {
   return formattedPrice;
 };
 
+
+
+const chevronDOM = document.querySelector('.chevron')
+console.log(chevronDOM)
+
+chevronDOM.addEventListener('click',() => {
+    window.history.back()
+})
+
+
+function getRandomNumber() {
+  return Math.floor(Math.random() * account.length);
+}
+
+
+const accBtnDOM = document.querySelector('.acc-btn');
+const text = document.querySelector('.acc-text').textContent;
+const copyDOM = document.querySelector('.copy');
+
+const bankDOM = document.querySelector('.bank');
+const bankTextDOM = document.querySelector('.acc-text');
+
+const account = [
+  { name: 'John Doe', bank: 'Opay', number: '2345656788' },
+  { name: 'Peter John', bank: 'Palmpay', number: '4356775643' },
+  { name: 'Daniel Sam', bank: 'Moniempoint', number: '1234567899' },
+];
+
+accBtnDOM.addEventListener('click', () => {
+  navigator.clipboard.writeText(text);
+  copyDOM.classList.add('show');
+});
+
+setInterval(() => {
+  copyDOM.classList.remove('show');
+}, 2000);
+
+let countDOM = document.querySelector('#count');
+
+let up = true;
+let value = 200;
+let increment = 1;
+let ceiling = 0;
+
+function calculate() {
+  if (up == true && value >= ceiling) {
+    value -= increment;
+    if (value == ceiling) {
+      up = false;
+      const randomNumber = getRandomNumber();
+      bankDOM.textContent = `${account[randomNumber].bank} - ${account[randomNumber].name}`;
+      bankTextDOM.textContent = account[randomNumber].number;
+
+      accBtnDOM.addEventListener('click', () => {
+        navigator.clipboard.writeText(
+          (bankTextDOM.textContent = account[randomNumber].number)
+        );
+        copyDOM.classList.add('show');
+      });
+    }
+  }
+
+  countDOM.innerHTML = `${value}`;
+}
+
+setInterval(calculate, 1000);
+
 const investDOM = document.querySelectorAll('.amount');
 const params2 = window.location.search;
 const urlID = new URLSearchParams(params2).get('id');
@@ -65,61 +132,7 @@ contDOM.addEventListener('click', (e) => {
   modalDOM.classList.remove('show');
 });
 
-const accBtnDOM = document.querySelector('.acc-btn');
-const text = document.querySelector('.acc-text').textContent;
-const copyDOM = document.querySelector('.copy');
 
-const bankDOM = document.querySelector('.bank');
-const bankTextDOM = document.querySelector('.acc-text');
-
-const account = [
-  { name: 'John Doe', bank: 'Opay', number: '2345656788' },
-  { name: 'Peter John', bank: 'Palmpay', number: '4356775643' },
-  { name: 'Daniel Sam', bank: 'Moniempoint', number: '1234567899' },
-];
-
-accBtnDOM.addEventListener('click', () => {
-  navigator.clipboard.writeText(text);
-  copyDOM.classList.add('show');
-});
-
-setInterval(() => {
-  copyDOM.classList.remove('show');
-}, 2000);
-
-let countDOM = document.querySelector('.count');
-
-let up = true;
-let value = 90;
-let increment = 1;
-let ceiling = 0;
-
-function calculate() {
-  if (up == true && value >= ceiling) {
-    value -= increment;
-    if (value == ceiling) {
-      up = false;
-      const randomNumber = getRandomNumber();
-      bankDOM.textContent = `${account[randomNumber].bank} - ${account[randomNumber].name}`;
-      bankTextDOM.textContent = account[randomNumber].number;
-
-      accBtnDOM.addEventListener('click', () => {
-        navigator.clipboard.writeText(
-          (bankTextDOM.textContent = account[randomNumber].number)
-        );
-        copyDOM.classList.add('show');
-      });
-    }
-  }
-
-  countDOM.innerHTML = `${value}`;
-}
-
-setInterval(calculate, 1000);
-
-function getRandomNumber() {
-  return Math.floor(Math.random() * account.length);
-}
 
 
 const senderDOM = document.querySelector('#senderName')
@@ -213,10 +226,3 @@ senderBtn.addEventListener('click', async (e) => {
 })
 
 
-
-
-const chevronDOM = document.querySelector('.chevron')
-
-chevronDOM.addEventListener('click',() => {
-    window.history.back()
-})

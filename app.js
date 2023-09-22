@@ -67,7 +67,7 @@ app.get('/product', authenticateUser, (req, res) => {
 })
 
 app.get('/buy', authenticateUser, (req, res) => {
-    res.sendFile(path.resolve(__dirname, './public/pages/buying.html'))
+    res.sendFile(path.resolve(__dirname, './public/pages/buy.html'))
 })
 
 app.get('/income', authenticateUser, (req, res) => {

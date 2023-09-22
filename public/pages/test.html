@@ -1,130 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="”form-group”">
-      <label class="”form-control-label”" for="”input-last-name”">Bank</label>
-      <select
-        id="”bankCode”"
-        name="”bankCode”"
-        class="”form-control"
-        form-control-alternative”
-      >
-        <option value="””">--Select Bank--</option>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
 
-        <option value="”801”">Abbey Mortgage Bank</option>
+    <link rel="stylesheet" href="../css/buy.css">
 
-        <option value="”044”">Access Bank</option>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+  />
 
-        <option value="”063”">Access Bank (Diamond)</option>
+</head>
+<body class="container">
+<!-- preloader -->
+<div class="preloader">
+    <p>Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span><span class="dot4">.</span><span class="dot5">.</span><span class="dot6">.</span></p>
+  </div>
 
-        <option value="”035A”">ALAT by WEMA</option>
+  <a href="https://chat.whatsapp.com/E0dhHX2A9hAI5UHnvzFduz" class="team"><i class="fab fa-teamspeak"></i></a>
+  
+    <div class="buy-section">
+        <div  class="home section-center">
+            <span class="chevron"><i class="fas fa-chevron-left"></i></span>
+            
+            <h3 class="count section-center"></h3>
+        </div>
+        
+        <div class="buy-center section-center">
+            
 
-        <option value="”401”">ASO Savings and Loans</option>
+            <article class="buy-box1">
+                <img src="../images/opay.png" alt="" class="buy-img">
+                <p>Opay Microfinance Bank</p>
+                <h2 class="amount"><span></span></h2>
 
-        <option value="”50931”">Bowen Microfinance Bank</option>
+                
+                <div class="buy-foot">Amount: <span class="amount"></span></div>
+                
+            </article>
+            
 
-        <option value="”50823”">CEMCS Microfinance Bank</option>
+        
+                <form class="form-control">
+                    <label for="step" class="buy-label"><b><span class="imp">*</span>Step 1: </b>Input the sender name</label>
+    
+                    <input type="text" class="buy-input" id="senderName">
+                    <input type="text" class="buy-input"  hidden id="investAmt">
+                    <input type="text" class="buy-input"  hidden id="dailyPercentage">
+                    <input type="text" class="buy-input"  hidden id="totalPercentage">
+                    <input type="text" class="buy-input" hidden id="investName">
+                    
+    
+                    <p class="instruct">Open your bank app and make transfer. Copy the bank account shown below and input the amount shown above.</p>
+    
+                    <div class="acc">
+                        <p>Pay with transfer:</p>
+                        <p class="bank">Fidelity</p>
+                        <div class="details">
+                            <h2 class="acc-text">23252677282</h2>
+                            <button type="button" class="acc-btn btn">Copy</button>
+                        </div>
+                    </div>
+    
+                    <a href="" type="submit" class="submit-btn btn" id="sender-btn">I HAVE MADE PAYMENT</a>
+                    
+                </form>
+            
 
-        <option value="”023”">Citibank Nigeria</option>
+        </div>
 
-        <option value="”559”">Coronation Merchant Bank</option>
 
-        <option value="”050”">Ecobank Nigeria</option>
-
-        <option value="”562”">Ekondo Microfinance Bank</option>
-
-        <option value="”50126”">Eyowo</option>
-
-        <option value="”070”">Fidelity Bank</option>
-
-        <option value="”51314”">Firmus MFB</option>
-
-        <option value="”011”">First Bank of Nigeria</option>
-
-        <option value="”214”">First City Monument Bank</option>
-
-        <option value="”501”">FSDH Merchant Bank Limited</option>
-
-        <option value="”00103”">Globus Bank</option>
-
-        <option value="”058”">Guaranty Trust Bank</option>
-
-        <option value="”51251”">Hackman Microfinance Bank</option>
-
-        <option value="”50383”">Hasal Microfinance Bank</option>
-
-        <option value="”030”">Heritage Bank</option>
-
-        <option value="”51244”">Ibile Microfinance Bank</option>
-
-        <option value="”50457”">Infinity MFB</option>
-
-        <option value="”301”">Jaiz Bank</option>
-
-        <option value="”082”">Keystone Bank</option>
-
-        <option value="”50211”">Kuda Bank</option>
-
-        <option value="”90052”">Lagos Building Investment Company Plc.</option>
-
-        <option value="”50563”">Mayfair MFB</option>
-
-        <option value="”50304”">Mint MFB</option>
-
-        <option value="”565”">One Finance</option>
-
-        <option value="”999991”">PalmPay</option>
-
-        <option value="”526”">Parallex Bank</option>
-
-        <option value="”311”">Parkway – ReadyCash</option>
-
-        <option value="”999992”">Paycom</option>
-
-        <option value="”50746”">Petra Mircofinance Bank Plc</option>
-
-        <option value="”076”">Polaris Bank</option>
-
-        <option value="”101”">Providus Bank</option>
-
-        <option value="”502”">Rand Merchant Bank</option>
-
-        <option value="”125”">Rubies MFB</option>
-
-        <option value="”51310”">Sparkle Microfinance Bank</option>
-
-        <option value="”221”">Stanbic IBTC Bank</option>
-
-        <option value="”068”">Standard Chartered Bank</option>
-
-        <option value="”232”">Sterling Bank</option>
-
-        <option value="”100”">Suntrust Bank</option>
-
-        <option value="”302”">TAJ Bank</option>
-
-        <option value="”51211”">TCF MFB</option>
-
-        <option value="”102”">Titan Bank</option>
-
-        <option value="”032”">Union Bank of Nigeria</option>
-
-        <option value="”033”">United Bank For Africa</option>
-
-        <option value="”215”">Unity Bank</option>
-
-        <option value="”566”">VFD Microfinance Bank Limited</option>
-
-        <option value="”035”">Wema Bank</option>
-
-        <option value="”057”">Zenith Bank</option>
-      </select>
+       
     </div>
-  </body>
+
+    <div class="modal">
+        <h2>Tips</h2>
+        <p>The correct payer information must be entered, otherwise the recharge cannot be successful</p>
+        <button type="button" class="modal-btn btn">OK</button>
+    </div>
+    
+    <div class="copy">Account Number copied successfully</div>
+    <div class="alert"></div>
+
+    
+
+    <script src="../js/buy.js" type="module"></script>
+</body>
 </html>
