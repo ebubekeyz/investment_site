@@ -331,9 +331,8 @@ Mine
 }
 
 .mine-info {
-  display: grid;
-  grid-template-columns: 10% 50% 40%;
-  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -343,8 +342,15 @@ Mine
   width: 2rem;
   height: 2rem;
   border-radius: 5rem;
+ 
+}
+
+.tee {
+ margin-top: 0.2rem;
   color: #e3e5e6;
   font-size: larger;
+  font-weight: 700;
+ 
 }
 
 .mine-body {
