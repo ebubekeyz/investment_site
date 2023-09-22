@@ -253,7 +253,7 @@ img {
 Buy Styles
 ===============
 */
-
+/* 
 .team {
   border-radius: 1rem;
   position: fixed;
@@ -283,7 +283,7 @@ Buy Styles
   100% {
     transform: scale(1);
   }
-}
+} */
 
 .seperate {
   display: flex;
