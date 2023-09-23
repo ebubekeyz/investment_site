@@ -33,22 +33,22 @@ const createWithdrawal = async (req, res) => {
     html: `
     <div>
 
-    <div style="display: flex; justify-content: space-around">
+    <div style="display: grid; grid-template-columns: 1fr 1fr">
     <p style="font-weight: 700">Account Name:</p>
      <span>${accountName}</span>
     </div>
 
-    <div style="display: flex; justify-content: space-around">
+    <div style="display: grid; grid-template-columns: 1fr 1fr">
     <p style="font-weight: 700">Account Number:</p>
      <span>${accountNumber}</span>
     </div>
 
-    <div style="display: flex; justify-content: space-around">
+    <div style="display: grid; grid-template-columns: 1fr 1fr">
     <p style="font-weight: 700">Main Withdrawal:</p>
      <span>${mainWithdrawal}</span>
     </div>
 
-    <div style="display: flex; justify-content: space-around">
+    <div style="display: grid; grid-template-columns: 1fr 1fr">
     <p style="font-weight: 700">Status:</p>
      <span>${status}</span>
     </div>
