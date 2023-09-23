@@ -111,6 +111,69 @@ withdrawBtn.addEventListener('click', async (e) => {
         alertDOM.classList.remove('show');
       }, 5000);
       withdrawBtn.textContent = 'Withdraw';
+
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+const balanceDOM = document.querySelector('.curBalance')
+
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch(`/api/v1/withdraw/${urlID}/withdrawal`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    const withdraw = data.withdraw
+    let balanceCalc = data.balanceCalc
+    const totalBalance = data.totalBalance
+    
+    
+    const balanceLength = balanceCalc.length - 1
+
+    balanceCalc = balanceCalc[balanceLength]
+    console.log(balanceCalc)
+    
+
+    if (response.status === 200) {
+      balanceDOM.textContent = formatPrice(accumulateTotal - balanceCalc)
+    } else {
+      console.log(data.msg);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    balanceDOM.textContent = formatPrice(0)
+    const response = await fetch(`/api/v1/accumulate/${urlID}/accumulate`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+
+    const accumulate = data.accumulate;
+
+    if (response.status === 200) {
+      const accumulateTotal = accumulate.reduce((acc, curr) => {
+        return acc + curr.amount;
+      }, 0);
+
+      balanceDOM.textContent = formatPrice(accumulateTotal)
+     
+
       
     }
   } catch (error) {

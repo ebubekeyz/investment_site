@@ -365,12 +365,12 @@ Mine
   justify-content: space-between;
   padding:  1.5rem 0;
   padding-bottom: 0;
-  font-size: 1.08rem;
+  
 }
 
 .icon {
   color: rgb(3, 84, 109);
-  font-size: 1.3rem;
+ 
 }
 
 .account-center {
