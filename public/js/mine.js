@@ -101,8 +101,11 @@ mineBtn.addEventListener('click', async () => {
       let dailyEarningCalc = JSON.parse(localStorage.getItem('dailyEarningCalc'));
       let totalInvestmentCalc = JSON.parse(localStorage.getItem('totalInvestmentCalc'));
 
+      let accumulateTotal = JSON.parse(localStorage.getItem('accumulateTotal'));
+
       localStorage.removeItem('dailyEarningCalc')
       localStorage.removeItem('totalInvestmentCalc')
+      localStorage.removeItem('accumulateTotal')
       window.location = '/'
     }
     else{
@@ -120,7 +123,7 @@ mineBtn.addEventListener('click', async () => {
 
 let accumulateTotal = JSON.parse(localStorage.getItem('accumulateTotal'));
 
-totalIncomeDOM.textContent = formatPrice(accumulateTotal)
+
 
 
 
@@ -157,3 +160,33 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+
+// totalIncomeDOM.textContent = formatPrice(accumulateTotal)
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    balanceDOM.textContent = formatPrice(0)
+    const response = await fetch(`/api/v1/accumulate/${urlID}/accumulate`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+
+    const accumulate = data.accumulate;
+
+    if (response.status === 200) {
+      const accumulateTotal = accumulate.reduce((acc, curr) => {
+        return acc + curr.amount;
+      }, 0);
+
+      balanceDOM.textContent = formatPrice(accumulateTotal)
+      totalIncomeDOM.textContent = formatPrice(accumulateTotal)
+
+      
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});

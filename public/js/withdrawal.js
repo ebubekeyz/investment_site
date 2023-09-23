@@ -111,6 +111,7 @@ withdrawBtn.addEventListener('click', async (e) => {
         alertDOM.classList.remove('show');
       }, 5000);
       withdrawBtn.textContent = 'Withdraw';
+      
     }
   } catch (error) {
     console.log(error);
