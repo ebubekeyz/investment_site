@@ -6,6 +6,10 @@ const nodemailer = require('nodemailer');
 
 const createWithdrawal = async (req, res) => {
     req.body.user = req.user.userId
+    
+    if(req.body.withdrawalAmount < 2000){
+        throw new CustomError.BadRequestError('You cannot withdraw amount less than 2000')
+    }
 
     const withdraw = await Withdraw.create(req.body)
 
