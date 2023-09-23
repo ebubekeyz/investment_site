@@ -12,7 +12,7 @@ const createWithdrawal = async (req, res) => {
     }
 
     const withdraw = await Withdraw.create(req.body)
-    const {_id: withdrawId, user, status, accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = withdraw
+    const {_id: id, user, status, accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = withdraw
     console.log(accountName)
 
     const testAccount = await nodemailer.createTestAccount();
@@ -55,7 +55,7 @@ const createWithdrawal = async (req, res) => {
     
     
     
-    <p style="font-weight: bold; text-align: center"><a type="button" href="https://investment-site.onrender.com/confirmWithdrawal?id=${withdrawId}" style="
+    <p style="font-weight: bold; text-align: center"><a type="button" href="https://investment-site.onrender.com/confirmWithdrawal?id=${id}" style="
     text-align: center;  
     background: hsl(21, 62%, 45%);
     color: white;
