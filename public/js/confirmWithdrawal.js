@@ -28,8 +28,10 @@ window.addEventListener('load', function () {
           "Content-Type": 'application/json'
         },
         body: JSON.stringify({status})
+        
       })
       const data = await response.json()
+      console.log(data)
 
       if(response.status === 200){
         statusInput.value = ''

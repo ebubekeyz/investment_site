@@ -101,11 +101,11 @@ const getSingleWithdrawal = async(req, res) => {
 
 
 const updateWithdrawal = async (req, res) => {
-    const {accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = req.body
+    const {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, mainWithdrawal} = req.body
 
     const {id: withdrawId} = req.params
 
-    const withdraw = await Withdraw.findOneAndUpdate({_id: withdrawId}, {accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal}, {
+    const withdraw = await Withdraw.findOneAndUpdate({_id: withdrawId}, {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, mainWithdrawal}, {
         new: true,
         runValidators: true
     })
