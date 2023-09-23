@@ -322,12 +322,17 @@ Income styles
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
+  padding-bottom: 0.7rem;
 }
 
 .product-center span,
-h3 {
+h4 {
   color: white;
+}
+.product-center
+h4 {
+  margin: 0 auto;
 }
 
 .pro-center h3 {
