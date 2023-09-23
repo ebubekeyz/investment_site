@@ -6,8 +6,8 @@ const authenticateUser = async(req, res, next) => {
     const token = req.signedCookies.token
 
     if(!token){
-        throw new CustomError.UnauthenticatedError('Authentication Invalid')
-        // res.redirect('/')
+        // throw new CustomError.UnauthenticatedError('Authentication Invalid')
+        res.redirect('/')
     } 
     try{
         const {phone, userId, referID, role} = isTokenValid({token})

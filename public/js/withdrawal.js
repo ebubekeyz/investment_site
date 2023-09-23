@@ -15,6 +15,12 @@ const formatPrice = (investment) => {
 
 const chevronDOM = document.querySelector('.chevron')
 const accountInput= document.querySelector('#realname')
+const accountNameInput= document.querySelector('#account-name')
+const amountInput = document.querySelector('#amount')
+const taxInput = document.querySelector('#tax')
+const mainAmountInput = document.querySelector('#main-amount')
+const withdrawBtn = document.querySelector('#withdraw-btn')
+const alertDOM = document.querySelector('.alert')
 
 
 chevronDOM.addEventListener('click',() => {
@@ -47,6 +53,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if(response.status === 200){
      
         accountInput.value = bankInfo[length].bankAccount
+        accountNameInput.value = bankInfo[length].realName
      
          
     }
@@ -59,4 +66,64 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 })
 
+let withdrawalAmount = parseInt(amountInput.value)
+  let withdrawalTax = parseInt(taxInput.value)
+  let mainWithdrawal = parseInt(mainAmountInput.value)
 
+  amountInput.addEventListener('keyup',() => {
+    const tax = amountInput.value * 10 / 100
+  taxInput.value = tax
+  const main = amountInput.value - amountInput.value * 10 / 100
+  mainAmountInput.value = main
+  })
+
+  
+
+
+  withdrawBtn.addEventListener('click', async (e) => {
+    e.preventDefault()
+    let accountNumber = accountInput.value
+    let accountName = accountNameInput.value
+    let withdrawalAmount = amountInput.value
+  let withdrawalTax = taxInput.value
+  let mainWithdrawal = mainAmountInput.value
+
+  withdrawBtn.innerHTML = `<div class="loading"></div>`
+    try{
+      
+      const response = await fetch('/api/v1/withdraw',{
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal})
+      })
+      const data = await response.json()
+     
+      if(response.status === 201){
+        
+        amountInput.value = '';
+      taxInput.value = '';
+      mainAmountInput.value = '';
+      alertDOM.classList.add('show')
+            alertDOM.textContent = `Withdrawal Successful`
+            setInterval(() => {
+              alertDOM.classList.remove('show')
+            },5000)
+      withdrawBtn.textContent = 'Successful'
+      }
+      else {
+        
+    alertDOM.classList.add('show')
+            alertDOM.textContent = data.msg
+            setInterval(() => {
+              alertDOM.classList.remove('show')
+            },5000)
+            withdrawBtn.textContent = 'Withdraw'
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
+  })
+  

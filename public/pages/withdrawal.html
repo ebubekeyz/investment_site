@@ -38,22 +38,28 @@
 
     <div class="section-center">
         <form class="form-control">
+          <h3 class="with-head">Withdrawal Bank</h3>
           <div class="realname">
             <input type="text" class="form-input" id="realname" readonly/>
           </div>
 
+          <div class="realname">
+            <input type="text" class="form-input" id="account-name" readonly/>
+          </div>
+
+          <h3 class="with-head">Withdrawal Amount</h3>
           <div class="amount">
             <input type="text" class="form-input" id="amount" placeholder="Withdrawal Amount"/>
             <span class="naira1">₦</span>
           </div>
 
           <div class="tax">
-            <input type="text" class="form-input1" id="tax" value="1000" readonly/>
+            <input type="text" class="form-input1" id="tax"   readonly/>
             <span class="naira2">Withdrawal tax ₦</span>
           </div>
 
           <div class="actualAmt">
-            <input type="text" class="form-input2" id="actualAmt" value="1000" readonly/>
+            <input type="text" class="form-input2" id="main-amount" readonly/>
             <span class="naira3">Main withdrawal ₦</span>
           </div>
 

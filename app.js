@@ -28,6 +28,7 @@ const productRouter = require('./routes/productRoutes')
 const paymentRouter = require('./routes/paymentRoutes')
 const accumulateRouter = require('./routes/accumulateRoutes')
 const bankInfoRouter = require('./routes/bankInfoRoutes')
+const withdrawRouter = require('./routes/withdrawRoutes')
 
 const cookieParser = require('cookie-parser');
 
@@ -48,6 +49,7 @@ app.use('/api/v1/product', productRouter)
 app.use('/api/v1/payment', paymentRouter)
 app.use('/api/v1/accumulate', accumulateRouter)
 app.use('/api/v1/bankInfo', bankInfoRouter)
+app.use('/api/v1/withdraw', withdrawRouter)
 
 
 app.get('/about', (req, res) => {
