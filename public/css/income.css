@@ -334,7 +334,6 @@ h4 {
 h4 {
   margin: 0 auto;
 }
-
 .pro-center h3 {
   color: black;
 }
@@ -366,8 +365,7 @@ h4 {
 
 .product-details a,
 p,
-h3,
-h4 {
+h3 {
   text-align: center;
 }
 
