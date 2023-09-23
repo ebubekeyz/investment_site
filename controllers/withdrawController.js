@@ -1,21 +1,31 @@
-const Withdraw = require('../models/Withdraw')
-const {StatusCodes} = require('http-status-codes')
-const CustomError = require('../errors')
+const Withdraw = require('../models/Withdraw');
+const { StatusCodes } = require('http-status-codes');
+const CustomError = require('../errors');
 const nodemailer = require('nodemailer');
 
-
 const createWithdrawal = async (req, res) => {
-    req.body.user = req.user.userId
-    
-    if(req.body.withdrawalAmount < 2000){
-        throw new CustomError.BadRequestError('You cannot withdraw amount less than 2000')
-    }
+  req.body.user = req.user.userId;
 
-    const withdraw = await Withdraw.create(req.body)
-    const {_id: id, user, status, bankName, accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = withdraw
-   
+  if (req.body.withdrawalAmount < 2000) {
+    throw new CustomError.BadRequestError(
+      'You cannot withdraw amount less than 2000'
+    );
+  }
 
-    const testAccount = await nodemailer.createTestAccount();
+  const withdraw = await Withdraw.create(req.body);
+  const {
+    _id: id,
+    user,
+    status,
+    bankName,
+    accountName,
+    accountNumber,
+    withdrawalAmount,
+    withdrawalTax,
+    mainWithdrawal,
+  } = withdraw;
+
+  const testAccount = await nodemailer.createTestAccount();
 
   const transporter = nodemailer.createTransport({
     host: process.env.GMAIL_HOST,
@@ -76,72 +86,114 @@ const createWithdrawal = async (req, res) => {
     `,
   });
 
-    res.status(StatusCodes.CREATED).json({withdraw})
-}
+  res.status(StatusCodes.CREATED).json({ withdraw });
+};
 
 const getAllWithdrawals = async (req, res) => {
-    const withdraw = await Withdraw.find({}).populate({
-        path: 'user',
-        select: 'phone referID'
-    })
-    res.status(StatusCodes.OK).json({withdraw, count: withdraw.length})
-}
+  const withdraw = await Withdraw.find({}).populate({
+    path: 'user',
+    select: 'phone referID',
+  });
+  res.status(StatusCodes.OK).json({ withdraw, count: withdraw.length });
+};
 
 const getUserWithdrawal = async (req, res) => {
-    const {id: userId} = req.params
-    const withdraw = await Withdraw.find({user: userId})
-    res.status(StatusCodes.OK).json({withdraw})
-}
+  const { id: userId } = req.params;
+  const withdraw = await Withdraw.find({ user: userId });
 
-const getSingleWithdrawal = async(req, res) => {
-    const {id: withdrawId} = req.params
-    
-    const withdraw = await Withdraw.findOne({_id: withdrawId})
-    if(!withdraw){
-        throw new CustomError.BadRequestError(`No withdrawal id with id ${withdrawId}`)
+  const totalBalance = withdraw.reduce((acc, curr) => {
+    return acc + curr.withdrawalAmount;
+  }, 0);
+
+  const balanceCalc = withdraw.map((item) => {
+    let balance = 0;
+    if (item.status === 'processing') {
+      let curBalance = item.withdrawalAmount;
+
+      const calculate = totalBalance - curBalance;
+      balance = calculate;
     }
+    if (item.status === 'succeeded') {
+      balance = totalBalance;
+    }
+    return balance;
+  }, 0);
 
-    res.status(StatusCodes.OK).json({withdraw})
-}
+  res.status(StatusCodes.OK).json({ withdraw, totalBalance, balanceCalc });
+};
 
+const getSingleWithdrawal = async (req, res) => {
+  const { id: withdrawId } = req.params;
+
+  const withdraw = await Withdraw.findOne({ _id: withdrawId });
+  if (!withdraw) {
+    throw new CustomError.BadRequestError(
+      `No withdrawal id with id ${withdrawId}`
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ withdraw });
+};
 
 const updateWithdrawal = async (req, res) => {
-    const {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, bankName, mainWithdrawal} = req.body
+  const {
+    accountName,
+    accountNumber,
+    withdrawalAmount,
+    withdrawalTax,
+    status,
+    bankName,
+    mainWithdrawal,
+  } = req.body;
 
-    const {id: withdrawId} = req.params
+  const { id: withdrawId } = req.params;
 
-    const withdraw = await Withdraw.findOneAndUpdate({_id: withdrawId}, {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, bankName, mainWithdrawal}, {
-        new: true,
-        runValidators: true
-    })
-
-    if(!withdraw){
-        throw new CustomError.BadRequestError(`No withdrawal id with id ${withdrawId}`)
+  const withdraw = await Withdraw.findOneAndUpdate(
+    { _id: withdrawId },
+    {
+      accountName,
+      accountNumber,
+      withdrawalAmount,
+      withdrawalTax,
+      status,
+      bankName,
+      mainWithdrawal,
+    },
+    {
+      new: true,
+      runValidators: true,
     }
+  );
 
-    res.status(StatusCodes.OK).json({withdraw})
-}
+  if (!withdraw) {
+    throw new CustomError.BadRequestError(
+      `No withdrawal id with id ${withdrawId}`
+    );
+  }
 
+  res.status(StatusCodes.OK).json({ withdraw });
+};
 
-const deleteWithdrawal = async(req, res) => {
-    const {id: withdrawId} = req.params
-    
-    const withdraw = await Withdraw.findOne({_id: withdrawId})
-    if(!withdraw){
-        throw new CustomError.BadRequestError(`No withdrawal id with id ${withdrawId}`)
-    }
+const deleteWithdrawal = async (req, res) => {
+  const { id: withdrawId } = req.params;
 
-    await withdraw.deleteOne()
+  const withdraw = await Withdraw.findOne({ _id: withdrawId });
+  if (!withdraw) {
+    throw new CustomError.BadRequestError(
+      `No withdrawal id with id ${withdrawId}`
+    );
+  }
 
-    res.status(StatusCodes.OK).json({msg: 'withdrawals successfully deleted'})
-}
+  await withdraw.deleteOne();
 
+  res.status(StatusCodes.OK).json({ msg: 'withdrawals successfully deleted' });
+};
 
 module.exports = {
-    createWithdrawal,
-    getAllWithdrawals,
-    getUserWithdrawal,
-    getSingleWithdrawal,
-    updateWithdrawal,
-    deleteWithdrawal
-}
+  createWithdrawal,
+  getAllWithdrawals,
+  getUserWithdrawal,
+  getSingleWithdrawal,
+  updateWithdrawal,
+  deleteWithdrawal,
+};

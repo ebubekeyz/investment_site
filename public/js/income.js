@@ -14,6 +14,7 @@ const formatPrice = (investment) => {
 };
 
 const incomeDOM = document.querySelector('#income');
+const mineMenuDOM = document.querySelector('#mine-menu');
 
 const showMe = async () => {
   try {
@@ -35,7 +36,14 @@ const showMe = async () => {
             <span class="fav"><i class="fas fa-money-check"></i></span>
             <p>Income</p>
           </a>
-    `;
+    `
+
+    mineMenuDOM.innerHTML = `
+    <a href="/mine?id=${userId}">
+            <span class="fav"><i class="fas fa-users"></i></span>
+            <p>Mine</p>
+          </a>
+    `
   } catch (error) {
     console.log(error);
   }
@@ -203,12 +211,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         return acc + curr.amount;
       }, 0);
 
+      localStorage.setItem('accumulateTotal', JSON.stringify(accumulateTotal));
+
       accumulatedIncomeDOM.textContent = formatPrice(accumulateTotal);
     }
   } catch (error) {
     console.log(error);
   }
 });
+
 
 
 

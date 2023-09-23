@@ -17,6 +17,7 @@ const formatPrice = (investment) => {
 
   
 const incomeDOM = document.querySelector('#income');
+const mineMenuDOM = document.querySelector('#mine-menu');
 const mineIncomeDOM = document.querySelector('.mine-income');
 
 const mineNumberDOM = document.querySelector('.mine-number')
@@ -70,13 +71,20 @@ window.addEventListener('DOMContentLoaded', async () => {
                         <p class="withdraw-text">Withdraw</p>
                     </a>
     `
+    mineMenuDOM.innerHTML = `
+    <a href="/mine?id=${userId}">
+            <span class="fav"><i class="fas fa-users"></i></span>
+            <p>Mine</p>
+          </a>
+    `
   }
   catch(error){
     console.log(error)
   }
 })
 
-
+const balanceDOM = document.querySelector('#balance')
+const totalIncomeDOM = document.querySelector('#total-income')
 
 mineBtn.addEventListener('click', async () => {
   mineBtn.innerHTML = `<div class="loading"></div>`
@@ -107,3 +115,45 @@ mineBtn.addEventListener('click', async () => {
     console.log(error)
   }
 })
+
+
+
+let accumulateTotal = JSON.parse(localStorage.getItem('accumulateTotal'));
+
+totalIncomeDOM.textContent = formatPrice(accumulateTotal)
+
+
+
+const params2 = window.location.search;
+const urlID = new URLSearchParams(params2).get('id');
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch(`/api/v1/withdraw/${urlID}/withdrawal`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    const withdraw = data.withdraw
+    let balanceCalc = data.balanceCalc
+    const totalBalance = data.totalBalance
+    
+    
+    const balanceLength = balanceCalc.length - 1
+
+    balanceCalc = balanceCalc[balanceLength]
+    console.log(balanceCalc)
+    
+
+    if (response.status === 200) {
+      balanceDOM.textContent = formatPrice(accumulateTotal - balanceCalc)
+    } else {
+      console.log(data.msg);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+

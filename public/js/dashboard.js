@@ -69,6 +69,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 const incomeDOM = document.querySelector('#income');
+const mineMenuDOM = document.querySelector('#mine-menu');
 
 const showMe = async () => {
   try {
@@ -91,6 +92,13 @@ const showMe = async () => {
     <a href="/income?id=${userId}">
             <span class="fav"><i class="fas fa-money-check"></i></span>
             <p>Income</p>
+          </a>
+    `
+
+    mineMenuDOM.innerHTML = `
+    <a href="/mine?id=${userId}">
+            <span class="fav"><i class="fas fa-users"></i></span>
+            <p>Mine</p>
           </a>
     `
 
