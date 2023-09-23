@@ -16,6 +16,7 @@ const formatPrice = (investment) => {
 const chevronDOM = document.querySelector('.chevron');
 const accountInput = document.querySelector('#realname');
 const accountNameInput = document.querySelector('#account-name');
+const bankNameInput = document.querySelector('#bank-name');
 const amountInput = document.querySelector('#amount');
 const taxInput = document.querySelector('#tax');
 const mainAmountInput = document.querySelector('#main-amount');
@@ -46,6 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (response.status === 200) {
       accountInput.value = bankInfo[length].bankAccount;
       accountNameInput.value = bankInfo[length].realName;
+      bankNameInput.value = bankInfo[length].bankCode;
     } else {
       console.log(data.msg);
     }
@@ -72,6 +74,7 @@ withdrawBtn.addEventListener('click', async (e) => {
   let withdrawalAmount = amountInput.value;
   let withdrawalTax = taxInput.value;
   let mainWithdrawal = mainAmountInput.value;
+  let bankName = bankNameInput.value;
 
   withdrawBtn.innerHTML = `<div class="loading"></div>`;
   try {
@@ -83,6 +86,7 @@ withdrawBtn.addEventListener('click', async (e) => {
       body: JSON.stringify({
         accountName,
         accountNumber,
+        bankName,
         withdrawalAmount,
         withdrawalTax,
         mainWithdrawal,

@@ -12,8 +12,8 @@ const createWithdrawal = async (req, res) => {
     }
 
     const withdraw = await Withdraw.create(req.body)
-    const {_id: id, user, status, accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = withdraw
-    console.log(accountName)
+    const {_id: id, user, status, bankName, accountName, accountNumber, withdrawalAmount, withdrawalTax, mainWithdrawal} = withdraw
+   
 
     const testAccount = await nodemailer.createTestAccount();
 
@@ -41,6 +41,11 @@ const createWithdrawal = async (req, res) => {
     <div style="display: grid; grid-template-columns: 1fr 1fr">
     <p style="font-weight: 700">Account Number:</p>
      <span>${accountNumber}</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr">
+    <p style="font-weight: 700">Bank Name:</p>
+     <span>${bankName}</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr">
@@ -101,11 +106,11 @@ const getSingleWithdrawal = async(req, res) => {
 
 
 const updateWithdrawal = async (req, res) => {
-    const {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, mainWithdrawal} = req.body
+    const {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, bankName, mainWithdrawal} = req.body
 
     const {id: withdrawId} = req.params
 
-    const withdraw = await Withdraw.findOneAndUpdate({_id: withdrawId}, {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, mainWithdrawal}, {
+    const withdraw = await Withdraw.findOneAndUpdate({_id: withdrawId}, {accountName, accountNumber, withdrawalAmount, withdrawalTax, status, bankName, mainWithdrawal}, {
         new: true,
         runValidators: true
     })
