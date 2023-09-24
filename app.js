@@ -105,6 +105,11 @@ app.get('/withdrawal', authenticateUser, (req, res) => {
     res.sendFile(path.resolve(__dirname, './public/pages/withdrawal.html'))
 })
 
+
+app.get('/withdrawalRecord', authenticateUser, (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/pages/withdrawalRecord.html'))
+})
+
 app.get('/confirmWithdrawal', (req, res) => {
     res.sendFile(path.resolve(__dirname, './public/pages/confirmWithdrawal.html'))
 })

@@ -22,10 +22,44 @@ const taxInput = document.querySelector('#tax');
 const mainAmountInput = document.querySelector('#main-amount');
 const withdrawBtn = document.querySelector('#withdraw-btn');
 const alertDOM = document.querySelector('.alert');
+const recordDOM = document.querySelector('.record-center');
 
 chevronDOM.addEventListener('click', () => {
   window.history.back();
 });
+
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try{
+    const response = await fetch('/api/v1/users/showMe',{
+      methods: 'GET',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+
+    const data = await response.json()
+    const user = data.user
+    console.log(user)
+
+    const {phone, userId, referID} = user
+   
+
+    recordDOM.innerHTML = `
+    <a href="/withdrawalRecord?id=${userId}">Withdrawal Record
+</a>
+    `
+   
+  }
+  catch(error){
+    console.log(error)
+  }
+})
+
+
+
+
+
 
 const params2 = window.location.search;
 const urlID = new URLSearchParams(params2).get('id');

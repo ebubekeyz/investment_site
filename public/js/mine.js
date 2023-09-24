@@ -127,10 +127,12 @@ let accumulateTotal = JSON.parse(localStorage.getItem('accumulateTotal'));
 
 
 
+
 const params2 = window.location.search;
 const urlID = new URLSearchParams(params2).get('id');
 
 window.addEventListener('DOMContentLoaded', async () => {
+  
   try {
     const response = await fetch(`/api/v1/withdraw/${urlID}/withdrawal`, {
       method: 'GET',
@@ -158,6 +160,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (error) {
     console.log(error);
+    
   }
 });
 
