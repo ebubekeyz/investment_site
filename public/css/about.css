@@ -357,3 +357,7 @@ Income styles
   .menu-main:hover .fav {
     color: rgb(42, 87, 84);
   }
+
+  .about-section {
+    padding-top: 1rem;
+  }
