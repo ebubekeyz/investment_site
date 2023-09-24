@@ -317,3 +317,7 @@ Income styles
     justify-content: space-between;
 
   }
+
+  .record-section {
+    padding-top: 1rem;
+  }
